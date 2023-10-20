@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        sse
+        <script>
+            const es = new EventSource('http://localhost:3001/events');
+
+            es.addEventListener('message', (event) => {
+                const data = event.data;
+                document.write(data);
+            });
+
+            es.addEventListener('complete', (event) => {
+                const res = event.data;
+                document.write(res);
+                es.close();
+            });
+        </script>
+    </body>
+</html>
